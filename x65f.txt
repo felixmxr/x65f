@@ -1,0 +1,136 @@
+Usage Page (Generic Desktop) 										05 01  
+Usage (Joystick) 													09 04  
+Collection (Application) 											A1 01  
+    Usage (Pointer) 													09 01  
+    Collection (Physical) 												A1 00  
+        Usage (X) 															09 30  
+        Usage (Y) 															09 31  
+        Logical Minimum (0) 												15 00  
+        Logical Maximum (4095) 												26 FF 0F  
+        Report Size (12) 													75 0C  
+        Report Count (2) 													95 02  
+        Input (Data,Var,Abs,NWrp,Lin,Pref,NNul,Bit) 						81 02  
+		
+        Usage (Rz) 															09 35  
+        Logical Minimum (0) 												15 00  
+        Logical Maximum (511) 												26 FF 01  
+        Report Size (9) 													75 09  
+        Report Count (1) 													95 01  
+        Input (Data,Var,Abs,NWrp,Lin,Pref,NNul,Bit) 						81 02  
+		
+        Usage (Z) 															09 32  
+        Usage (Rx) 															09 33  
+        Usage (Ry) 															09 34  
+        Usage (Slider) 														09 36  
+        Logical Minimum (0) 												15 00  
+        Logical Maximum (255) 												26 FF 00  
+        Report Size (8) 													75 08  
+        Report Count (4) 													95 04  
+        Input (Data,Var,Abs,NWrp,Lin,Pref,NNul,Bit) 						81 02  
+		
+        Usage Page (Button) 												05 09  
+        Usage Minimum (Button 1) 											19 01  
+        Usage Maximum (Button 50) 											29 32  
+        Logical Minimum (0) 												15 00  
+        Logical Maximum (1) 												25 01  
+        Report Count (50) 													95 32  
+        Report Size (1) 													75 01  
+        Input (Data,Var,Abs,NWrp,Lin,Pref,NNul,Bit) 						81 02  
+		
+        Usage Page (Generic Desktop) 										05 01  
+        Usage (Hat Switch) 													09 39  
+        Logical Minimum (1) 												15 01  
+        Logical Maximum (8) 												25 08  
+        Physical Minimum (0) 												35 00  
+        Physical Maximum (315) 												46 3B 01  
+        Unit (Eng Rot: Degree) 												66 14 00  
+        Report Size (4) 													75 04  
+        Report Count (1) 													95 01  
+        Input (Data,Var,Abs,NWrp,Lin,Pref,Null,Bit) 						81 42  
+		
+        Usage Page (Game Controls) 											05 05  
+        Usage (Move Right/Left) 											09 24  
+        Usage (Move Up/Down) 												09 26  
+        Logical Minimum (0) 												15 00  
+        Logical Maximum (15) 												25 0F  
+        Report Size (4) 													75 04  
+        Report Count (2) 													95 02  
+        Input (Data,Var,Abs,NWrp,Lin,Pref,NNul,Bit) 						81 02  
+		
+        Report Size (1) 													75 01  
+        Report Count (1) 													95 01  
+        Input (Cnst,Ary,Abs) 												81 01  
+    End Collection 														C0  
+End Collection 														C0  
+
+
+
+
+0x05, 0x01,			// USAGE_PAGE (Generic Desktop)
+	0x09, 0x04,			// USAGE (Joystick)
+	0xa1, 0x01,			// COLLECTION (Application)	
+		0x09, 0x01,		// USAGE (Pointer)
+			0xA1, 0x00,		// COLLECTION (Physical)
+			0x85, 0x04,			// REPORT_ID (4)  (This is important when HID_SendReport() is called)
+
+			0x09, 0x30,		// USAGE (x)
+			0x09, 0x31,		// USAGE (y)
+			0x15, 0x00,			// LOGICAL_MINIMUM (0)
+			0x26, 0xff, 0x0f,	// LOGICAL_MAXIMUM (4095)
+			0x75, 0x0c,			// REPORT_SIZE (12)
+			0x95, 0x02,		// REPORT_COUNT (2)
+			0x81, 0x02,		// INPUT (Data,Var,Abs)	
+		
+			0x09, 0x35,		// USAGE (rz)
+			0x15, 0x00,			// LOGICAL_MINIMUM (0)
+			0x26, 0xff, 0x01,	// LOGICAL_MAXIMUM (511)
+			0x75, 0x09,			// REPORT_SIZE (9)
+			0x95, 0x01,		// REPORT_COUNT (1)
+			0x81, 0x02,		// INPUT (Data,Var,Abs)	
+		
+			0x09, 0x32,		// USAGE (z)
+			0x09, 0x33,		// USAGE (rx)
+			0x09, 0x34,		// USAGE (ry)
+			0x09, 0x36,		// USAGE (slider)
+			0x15, 0x00,			// LOGICAL_MINIMUM (0)
+			0x26, 0xff, 0x00,	// LOGICAL_MAXIMUM (255)			
+			0x75, 0x08,			// REPORT_SIZE (8)
+			0x95, 0x04,			// REPORT_COUNT (4)
+			0x81, 0x02,		// INPUT (Data,Var,Abs)	
+		
+			0x05, 0x09,			// USAGE_PAGE (Button)
+			0x19, 0x01,			// USAGE_MINIMUM (Button 1)
+			0x29, 0x32,			// USAGE_MAXIMUM (Button 50)
+			0x15, 0x00,			// LOGICAL_MINIMUM (0)
+			0x25, 0x01,			// LOGICAL_MAXIMUM (1)
+			0x95, 0x32,			// REPORT_COUNT (50)
+			0x75, 0x01,			// REPORT_SIZE (1)
+			0x81, 0x02,			// INPUT (Data,Var,Abs)
+
+			//Hat switches
+			0x05, 0x01,			// USAGE_PAGE (Generic Desktop)
+			0x09, 0x39,			// USAGE (Hat switch)
+			0x15, 0x01,			// LOGICAL_MINIMUM (1)
+			0x25, 0x08,			// LOGICAL_MAXIMUM (8)
+			0x35, 0x00,			// PHYSICAL_MINIMUM (0)
+			0x46, 0x3B, 0x01,	// PHYSICAL_MAXIMUM (315)
+			0x66, 0x14,	0x00,	// UNIT (Eng Rot:Angular Pos)
+			0x75, 0x04,			// REPORT_SIZE (4)
+			0x95, 0x01,			// REPORT_COUNT (1)
+			0x81, 0x42,			// INPUT (Data,Var,Abs)
+
+			0x05, 0x05,			// USAGE PAGE (Game controls)
+			0x09, 0x24,			// USAGE (move right left)
+			0x09, 0x26,			// USAGE (move up down)
+			0x15, 0x00,			// LOGICAL_MINIMUM (0)
+			0x25, 0x0f,			// LOGICAL_MAXIMUM (15)
+			0x75, 0x04,			// REPORT_SIZE (4)
+			0x95, 0x02,			// REPORT_COUNT (2)
+			0x81, 0x02,			// INPUT (Data,Var,Abs)
+		
+			0x75, 0x01,			// REPORT_SIZE (1)
+			0x95, 0x01,			// REPORT_COUNT (1)
+			0x81, 0x01,			// INPUT (Data,Var,Abs)
+			
+		0xc0,					// END_COLLECTION
+	0xc0					// END_COLLECTION
